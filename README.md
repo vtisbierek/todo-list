@@ -1,4 +1,4 @@
-Simple To-Do List APP that allows you to create new to-do items by date, as well as mark them as done and/or delete them. The APP will allow you to select the date and show you the items for that day.
+Simple To-Do List APP that allows you to create new to-do items by date, as well as mark them as done and/or delete them. The APP will allow you to select the date and show you the items for that day (in order to select the day, click on the calendar icon, select the day and confirm by clicking again on the calendar icon).
 
 Live at: https://todo-list-91d9.onrender.com/
 
