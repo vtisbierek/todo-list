@@ -1,0 +1,42 @@
+<%- include("header"); -%>
+    <div class="box" id="heading">
+        <h1><%=listType%></h1>
+        <span class="fa-solid fa-calendar" id="datepickerIcon"></span>
+        <div id="datepicker"></div>
+        <h2 class="current-date"><%=dateToShow%></h2>
+    </div>
+    
+    <div class="box">
+        <form class="listEntry invisible" action="/update" method="post">
+            <div class="item">
+                <input type="text" name="listSelect" class="invisible" value="<%=listType%>">
+                <input type="text" name="selectedDay" class="invisible day-selector" value="<%=dateToShow%>">
+            </div>     
+        </form>
+        
+        <%newListItems.forEach(function(item){%>
+            <form class="listEntry" action="/update" method="post">
+                <div class="item">
+                    <input type="hidden" name="operationType" class="operation-selector">
+                    <a class="fa-solid fa-trash"></a>
+                    <%if(item.status == "done"){%>
+                        <input name="itemCheckbox" type="checkbox" onChange="this.form.submit()" checked>
+                    <%} else{%>
+                        <input name="itemCheckbox" type="checkbox" onChange="this.form.submit()">
+                    <%}%>
+                    <p><%=item.description%></p>
+                </div>
+                <input type="hidden" name="listSelect" value="<%=listType%>">
+                <input type="hidden" name="selectedDay" class="day-selector" value="<%=dateToShow%>">
+                <input type="hidden" name="itemID" value="<%=item._id%>">     
+            </form>
+        <%});%>
+                
+        <form action="/" method="post" class="item">
+            <input type="text" name="selectedDay" class="invisible day-selector" value="<%=dateToShow%>">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off" id="entryText">
+            <button type="submit" name="listSelect" value="<%=listType%>" onClick="return checkEmpty()">+</button>
+        </form>
+    </div>
+
+<%- include("footer"); -%>
